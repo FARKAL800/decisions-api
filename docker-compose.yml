@@ -1,0 +1,29 @@
+services:
+  elasticsearch:
+      image: docker.elastic.co/elasticsearch/elasticsearch:8.1.0
+      environment:
+        - discovery.type=single-node
+        - xpack.security.enabled=true  # Activez la sécurité
+        - xpack.security.authc.api_key.enabled=true
+        - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}  # Lecture depuis le .env
+      networks:
+        - mon_reseau
+      ports:
+        - "9200:9200"  # Expose le port 9200 pour l'accès à Elasticsearch
+      healthcheck:
+        test: ["CMD", "curl", "-f", "http://localhost:9200/"]
+        interval: 30s
+        timeout: 10s
+        retries: 5
+  fastapi:
+    depends_on:
+      - elasticsearch 
+    build: .
+    networks:
+      - mon_reseau
+    ports:
+      - "8000:8000"
+
+networks:
+  mon_reseau:
+    driver: bridge

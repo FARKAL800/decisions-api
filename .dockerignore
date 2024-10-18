@@ -1,0 +1,17 @@
+# Ignorer les répertoires __pycache__
+__pycache__/
+
+# Ignorer les fichiers .pyc
+*.pyc
+
+# Ignorer les fichiers .pyo (optionnel)
+*.pyo
+
+# Ignorer les fichiers d'environnement virtuel
+venv/
+*.egg-info/
+
+# Ignorer les fichiers de configuration de l'IDE (optionnel)
+.idea/
+.vscode/
+
