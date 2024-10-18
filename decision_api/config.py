@@ -33,6 +33,7 @@ class TestConfig(GlobalConfig):
     DATABASE_URL: str = "sqlite:///test.db"
     DB_FORCE_ROLL_BACK: bool = True
     SECRET_KEY: str = "zaEGEZSGZQGVR"
+    ALGORITHM: str = "HS256"
     ELASTICSEARCH_URL: str = "http://localhost:9200"
     ADMIN_PASSWORD: str =  "admin"
     USER_PASSWORD: str = "user"

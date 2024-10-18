@@ -1,7 +1,7 @@
 import databases
 import sqlalchemy
 from elasticsearch import Elasticsearch
-
+from tqdm import tqdm
 from decision_api.config import config
 
 # Configuration de la base de données
@@ -57,8 +57,6 @@ def insert_user(email: str, password: str, scope: str):
 es = Elasticsearch(
     config.ELASTICSEARCH_URL, api_key=config.ELASTICSEARCH_API_KEY
 )  # Connexion à Elasticsearch
-
-from tqdm import tqdm
 
 async def index_sqlite_data():
     query = decisions_table.select()
