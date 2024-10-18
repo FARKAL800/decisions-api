@@ -67,8 +67,6 @@ sequenceDiagram
     FastAPI->>FastAPI: Exécute le script pour peupler la base de données (via load data)
 ```
 
-```
-
 API Architecture:
 
 ```mermaid
