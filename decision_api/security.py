@@ -95,7 +95,7 @@ async def admin_required(current_user: User = Depends(get_current_user)):
 
 # Dépendance pour vérifier le rôle "user"
 async def user_required(current_user: User = Depends(get_current_user)):
-    if "user" not in current_user.scopes and "admin" not in current_user.scope:
+    if "user" not in current_user.scope and "admin" not in current_user.scope:
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="Not enough permissions, user access required",

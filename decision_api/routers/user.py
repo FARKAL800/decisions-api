@@ -4,8 +4,9 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm
 
 from decision_api.database import database, user_table
-from decision_api.models.user import UserIn
+from decision_api.models.user import User, UserIn
 from decision_api.security import (
+    admin_required,
     authenticate_user,
     create_access_token,
     get_password_hash,
@@ -16,7 +17,7 @@ router = APIRouter()
 
 
 @router.post("/register", status_code=201)
-async def register(user: UserIn):
+async def register(user: UserIn, current_user: User = Depends(admin_required)):
     if await get_user(user.email):
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
