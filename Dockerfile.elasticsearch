@@ -1,0 +1,13 @@
+# Dockerfile.elasticsearch
+FROM docker.elastic.co/elasticsearch/elasticsearch:8.9.0
+
+ENV discovery.type=single-node
+ENV xpack.security.enabled=true
+ENV xpack.security.authc.api_key.enabled=true
+ENV ELASTIC_PASSWORD=${ELASTIC_PASSWORD} 
+
+# Script pour attendre que Elasticsearch démarre puis créer une API Key
+COPY create-api-key.sh /usr/share/elasticsearch/
+
+# Exécuter Elasticsearch puis générer l'API Key
+CMD ["/bin/bash", "-c", "/usr/share/elasticsearch/bin/elasticsearch & sleep 30 && /usr/share/elasticsearch/create-api-key.sh"]
