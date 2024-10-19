@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-
+from typing import Optional
 
 # Modèles Pydantic
 class DecisionCreate(BaseModel):
@@ -17,6 +17,7 @@ class DecisionResponse(BaseModel):
     identifiant: str
     titre: str
     chambre: str
+    contenu: Optional[str] = None 
 
     class Config:
         from_attributes = True
