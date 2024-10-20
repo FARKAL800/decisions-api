@@ -7,10 +7,7 @@ ENV xpack.security.authc.api_key.enabled=true
 ENV ELASTIC_PASSWORD=${ELASTIC_PASSWORD} 
 
 # Script pour attendre que Elasticsearch démarre puis créer une API Key
-COPY create-api-key.sh /usr/share/elasticsearch/
-
-# Définir les permissions d'exécution sur le script
-RUN chmod +x /usr/share/elasticsearch/create-api-key.sh
+COPY ./create-api-key.sh /create-api-key.sh
 
 # Exécuter Elasticsearch puis générer l'API Key
-CMD ["/bin/bash", "-c", "/usr/share/elasticsearch/bin/elasticsearch & sleep 30 && /usr/share/elasticsearch/create-api-key.sh"]
+#CMD ["/create-api-key.sh"]
