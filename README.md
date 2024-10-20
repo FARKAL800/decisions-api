@@ -1,3 +1,5 @@
+[![Python application](https://github.com/FARKAL800/decisions-api/actions/workflows/python-app.yml/badge.svg)](https://github.com/FARKAL800/decisions-api/actions/workflows/python-app.yml)
+
 # Résumé de la résolution du problème : Exposition des décisions de la cour de cassation
 
 ## Sujet
@@ -37,9 +39,15 @@ Une API REST a été créée pour exposer les décisions avec les fonctionnalit�
 ## Conclusion
 Cette solution permet de récupérer, stocker et exposer efficacement les décisions de la cour de cassation via une API sécurisée, tout en offrant des fonctionnalités de filtrage et de recherche pour une meilleure accessibilité des informations juridiques.
 
+## Documentation OpenAPI
+
+La documentation de l'API est accessible à l'adresse suivante :
+
+- [Swagger UI](https://farkal800.github.io/decisions-api/)
+
 ## UML diagrams
 
-example, this will produce a sequence diagram:
+Deployement sequence: 
 
 ```mermaid
 sequenceDiagram

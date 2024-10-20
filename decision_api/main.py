@@ -52,7 +52,11 @@ async def lifespan(app: FastAPI):
 
 
 # Initialiser FastAPI
-app = FastAPI(lifespan=lifespan)
+app = FastAPI(
+    lifespan=lifespan,
+    title="Decision API",
+    version="1.0.0",
+)
 
 app.include_router(decision_router)
 app.include_router(user_router)
