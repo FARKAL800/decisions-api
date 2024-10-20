@@ -4,9 +4,6 @@ FROM python:3.12-slim
 # Définir le répertoire de travail à la racine
 WORKDIR /
 
-# Copier le fichier .env à la racine
-COPY .env .
-
 # Copier les fichiers de votre application FastAPI et le script.py
 COPY ./decision_api /decision_api
 COPY case_scraper.py .

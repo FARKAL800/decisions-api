@@ -6,6 +6,8 @@ services:
         - xpack.security.enabled=true  # Activez la sécurité
         - xpack.security.authc.api_key.enabled=true
         - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}  # Lecture depuis le .env
+        - PORT=9200  # Définir le port d'écoute pour render
+        - network.host=0.0.0.0  # Écouter sur toutes les interfaces
       networks:
         - mon_reseau
       ports:
@@ -23,7 +25,8 @@ services:
       - mon_reseau
     ports:
       - "8000:8000"
-
+    env_file:
+      - .env
 networks:
   mon_reseau:
     driver: bridge
