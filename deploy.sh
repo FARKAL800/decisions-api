@@ -13,6 +13,7 @@ fi
 
 # Lancer Elasticsearch
 echo "Lancement d'Elasticsearch..."
+docker-compose build --no-cache elasticsearch
 docker-compose up -d elasticsearch
 
 # Vérifier la santé d'Elasticsearch
@@ -52,10 +53,11 @@ else
 fi
 
 # Fermez l'exposition du port
-docker update --publish-rm 9200 juripredis-elasticsearch-1
+#docker update --publish-rm 9200 juripredis-elasticsearch-1
 
 # Démarrer FastAPI
 echo "Lancement de FastAPI..."
-docker-compose up -d --build fastapi
+docker-compose build --no-cache fastapi
+docker-compose up -d fastapi
 
 echo "Déploiement terminé. Accédez à l'API à l'adresse http://localhost:8000"
